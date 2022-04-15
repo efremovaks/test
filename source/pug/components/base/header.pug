@@ -1,36 +1,96 @@
 mixin header(headerMods, currentUrl)
   -
+    const headerLang = [
+      {
+        href: "#",
+        text: "ru",
+      },
+      {
+        href: "#",
+        text: "en",
+      },
+    ];
+
     const headerLinks = [
       {
-        href: "index.html",
-        text: "Главная"
+        href: "#",
+        text: "Новости и блог"
       },
       {
         href: "#",
-        text: "Страница 2"
+        text: "Оплата и доставка"
       },
       {
         href: "#",
-        text: "Страница 3"
+        text: "Контакты"
       },
-    ]
+      {
+        href: "#",
+        text: "Вакансии"
+      },
+    ];
+
+        const otherLinks = [
+      {
+        href: "#",
+        text: "Каталог"
+      },
+      {
+        href: "#",
+        text: "Майнинг отель",
+        innerLinks: [
+          {
+            href: "#",
+            text: "Калининская АЭС",
+          },
+          {
+            href: "#",
+            text: "ПАО “Тулачермет”",
+          }
+        ]
+      },
+      {
+        href: "#",
+        text: "Лизинг"
+      },
+      {
+        href: "#",
+        text: "О компании"
+      },
+    ];
+
 
   header.header(class=headerMods)
     .container
-      if(currentUrl === "index.html")
-        //- lighthouse снимает 10 баллов SEO за <a> без href
-        span.header__logo Логотип
-      else
-        a.header__logo(href="index.html", aria-label="Переход на главную") Логотип
       nav.main-nav
-        button.main-nav__toggle.btn-reset(type="button", aria-label="Переключатель отображения меню", aria-pressed="false")
-          +icon("icon-burger", 20, 20)
+        //- button.main-nav__toggle.btn-reset(type="button" aria-label="Переключатель отображения меню" aria-pressed="false")
+        //-   +icon("icon-burger", 20, 20)
         .main-nav__wrapper
+          .langs.accordion(data-accordion="parent" data-single)
+            .langs__wrapper(data-accordion="element")
+              button(type="button" data-accordion="button").langs__btn ru
+              ul.langs__items(data-accordion="content")
+                each link in headerLang
+                  li.langs__item
+                    a(href=link.href)=link.text
+
           ul.main-nav__list
             each link in headerLinks
-              - const activeState = currentUrl === link.href
               li.main-nav__item
-                if(activeState)
-                  span.main-nav__link.is-active=link.text
-                else
+                a.main-nav__link(href=link.href)=link.text
+
+          ul.main-nav__other
+            each link in otherLinks
+              if link.innerLinks
+                li.main-nav__other-item.accordion(data-accordion="parent" data-single)
+                  .accordion__element(data-accordion="element")
+                    button.main-nav__other-link(data-accordion="button") Майнинг отель
+                    .accordion__content(data-accordion="content")
+                      ul.main-nav__other-list
+                        each item in link.innerLinks
+                          li.main-nav__other-inner-item
+                            a(href=item.href)=item.text
+
+              else
+                li.main-nav__other-item
                   a.main-nav__link(href=link.href)=link.text
