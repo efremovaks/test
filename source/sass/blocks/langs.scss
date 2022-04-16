@@ -1,0 +1,128 @@
+.langs {
+
+  @include vp-1023 {
+    &.accordion {
+      position: absolute;
+      top: -34px;
+      left: -28%;
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+    margin-right: 40px;
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    background: $color-transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    color: $color-default-white;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: $trans-default;
+
+    svg {
+      color: $color-dodger-blue;
+      margin-left: 5px;
+
+      transition: $trans-default;
+    }
+
+    @include vp-1023 {
+      color: $color-black-russian;
+      opacity: 0.5;
+    }
+
+    @media (hover: hover), screen and (min-width: 0\0) {
+      &:hover,
+      &:focus {
+        color: $color-dodger-blue;
+      }
+    }
+  }
+
+  .is-active {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__list {
+    background: $color-default-white;
+    border: 0 solid $color-transparent;
+    border-radius: 5px;
+
+    position: absolute;
+    top: 22px;
+    left: 0;
+    z-index: 10;
+
+    filter: drop-shadow(0px 60px 96px rgba(0, 0, 0, 0.00719002))
+      drop-shadow(0px 30.0293px 48.0469px rgba(0, 0, 0, 0.0104523))
+      drop-shadow(0px 18.0882px 28.9412px rgba(0, 0, 0, 0.0128732))
+      drop-shadow(0px 11.5919px 18.547px rgba(0, 0, 0, 0.015))
+      drop-shadow(0px 7.51293px 12.0207px rgba(0, 0, 0, 0.0171268))
+      drop-shadow(0px 4.72931px 7.56689px rgba(0, 0, 0, 0.0195477))
+      drop-shadow(0px 2.71728px 4.34765px rgba(0, 0, 0, 0.02281))
+      drop-shadow(0px 1.19595px 1.91351px rgba(0, 0, 0, 0.03));
+  }
+
+  &__items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 51px;
+    height: 76px;
+  }
+
+  &__item {
+    padding-bottom: 5px;
+    width: 100%;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    a {
+      display: block;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: $color-black-russian;
+      opacity: 0.5;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    &.active {
+      a {
+        color: $color-dodger-blue;
+        opacity: 0.8;
+      }
+    }
+
+    @media (hover: hover), screen and (min-width: 0\0) {
+      &:hover,
+      &:focus {
+        background-color: $color-alice-blue;
+        a {
+          color: $color-dodger-blue;
+        }
+      }
+    }
+  }
+}

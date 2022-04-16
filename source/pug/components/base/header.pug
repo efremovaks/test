@@ -1,15 +1,5 @@
 mixin header(headerMods, currentUrl)
   -
-    const headerLang = [
-      {
-        href: "#",
-        text: "ru",
-      },
-      {
-        href: "#",
-        text: "en",
-      },
-    ];
 
     const headerLinks = [
       {
@@ -61,36 +51,73 @@ mixin header(headerMods, currentUrl)
 
 
   header.header(class=headerMods)
-    .container
-      nav.main-nav
-        //- button.main-nav__toggle.btn-reset(type="button" aria-label="Переключатель отображения меню" aria-pressed="false")
-        //-   +icon("icon-burger", 20, 20)
-        .main-nav__wrapper
-          .langs.accordion(data-accordion="parent" data-single)
-            .langs__wrapper(data-accordion="element")
-              button(type="button" data-accordion="button").langs__btn ru
-              ul.langs__items(data-accordion="content")
-                each link in headerLang
-                  li.langs__item
-                    a(href=link.href)=link.text
+    nav.main-nav
+      button.main-nav__toggle(type="button" aria-label="Переключатель отображения меню" aria-pressed="false")
+        span.burger
+          span.burger__line.burger__line--first
+          span.burger__line.burger__line--second
+          span.burger__line.burger__line--third
+          span.burger__line.burger__line--fourth
+      .main-nav__wrapper
+        p.main-nav__header меню
+        .main-nav__menu-one
+          .container
+            .langs.accordion(data-accordion="parent" data-single)
+              .langs__wrapper(data-accordion="element")
+                button(type="button" data-accordion="button").langs__btn ru
+                  +icon("icon-lang-toggle", 5, 5)
+                .langs__list(data-accordion="content")
+                  ul.langs__items
+                    li.langs__item.active
+                      a(href="#") ru
+                    li.langs__item
+                      a(href="#") en
 
-          ul.main-nav__list
-            each link in headerLinks
-              li.main-nav__item
-                a.main-nav__link(href=link.href)=link.text
-
-          ul.main-nav__other
-            each link in otherLinks
-              if link.innerLinks
-                li.main-nav__other-item.accordion(data-accordion="parent" data-single)
-                  .accordion__element(data-accordion="element")
-                    button.main-nav__other-link(data-accordion="button") Майнинг отель
-                    .accordion__content(data-accordion="content")
-                      ul.main-nav__other-list
-                        each item in link.innerLinks
-                          li.main-nav__other-inner-item
-                            a(href=item.href)=item.text
-
-              else
-                li.main-nav__other-item
+            ul.main-nav__list
+              each link in headerLinks
+                li.main-nav__item
                   a.main-nav__link(href=link.href)=link.text
+
+            .main-nav__search
+              label(for="search")
+                input(type="text", id="search", name="search", placeholder="Поиск...")
+                button(type="button")
+                  +icon("icon-search", 14, 14)
+
+        .main-nav__menu-two
+          .container
+            ul.main-nav__other
+              each link in otherLinks
+                if link.innerLinks
+                  li.main-nav__other-item.accordion(data-accordion="parent" data-single)
+                    .main-nav__other-element(data-accordion="element")
+                      button.main-nav__other-link(data-accordion="button") Майнинг отель
+                        +icon("icon-accordeon-toggle", 18, 18)
+                      .main-nav__other-content(data-accordion="content")
+                        ul.main-nav__other-list
+                          each item in link.innerLinks
+                            li.main-nav__other-inner-item
+                              a(href=item.href)=item.text
+                else
+                  li.main-nav__other-item
+                    a.main-nav__other-link(href=link.href)=link.text
+
+            .main-nav__contacts
+              .main-nav__call
+                a(href="tel:+7 (499) 877-41-45").main-nav__phone +7 (499) 877-41-45
+                p.main-nav__phone-text Заказать звонок
+
+              .main-nav__social
+                ul.main-nav__social-list
+                  li.main-nav__social-item
+                    a(href="#")
+                      +icon("icon-tg", 24, 24)
+                  li.main-nav__social-item
+                    a(href="#")
+                      +icon("icon-ws", 24, 24)
+
+            .main-nav__basket
+              a(href="#") Корзина
+                +icon("icon-basket", 18, 18)
+
+
