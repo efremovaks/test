@@ -640,6 +640,9 @@ button,
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .main-nav__menu-one {
@@ -805,6 +808,13 @@ button,
 }
 
 .main-nav__menu-two {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  min-height: 61px;
   -webkit-box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.2);
   box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.2);
 }
@@ -812,8 +822,8 @@ button,
 .main-nav__menu-two .container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 29% 11%;
-  grid-template-columns: 1fr 29% 11%;
+  -ms-grid-columns: 1fr 28.1% 11%;
+  grid-template-columns: 1fr 28.1% 11%;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -878,6 +888,10 @@ button,
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
   margin-left: 5px;
+}
+
+.main-nav__other-link svg:last-of-type {
+  display: none;
 }
 
 .main-nav .is-active .main-nav__other-link svg {
@@ -1030,8 +1044,28 @@ button,
   padding: 0;
 }
 
+.main-nav--open .main-nav__wrapper {
+  padding: 0;
+  height: 0;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.main-nav--open .main-nav__wrapper::before {
+  display: none;
+}
+
+.main-nav--open .main-nav__header,
+.main-nav--open .main-nav__list,
+.main-nav--open .main-nav__search,
+.main-nav--open .main-nav__other {
+  display: none;
+}
+
 .footer {
   padding: 40px 0;
+  background-color: #181a31;
 }
 
 .modal {
@@ -1316,6 +1350,11 @@ button,
   transform: rotate(-45deg);
 }
 
+.content {
+  background: #aab1b7;
+  height: 100vh;
+}
+
 .accordion {
   max-width: 500px;
   margin: 0;
@@ -1387,7 +1426,8 @@ button,
   }
 
   .main-nav__other-link:hover,
-  .main-nav__other-link:focus {
+  .main-nav__other-link:focus,
+  .main-nav__other-link:active {
     color: #008ef8;
   }
 
@@ -1461,12 +1501,56 @@ button,
     box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.2);
   }
 
+  .main-nav__header {
+    display: block;
+    margin: 0;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 32px;
+    color: #181a31;
+    position: absolute;
+    top: 23px;
+    left: 23px;
+  }
+
   .main-nav__wrapper {
     position: absolute;
-    width: 60%;
+    width: 39%;
     height: 100vh;
     right: 0;
     top: 50px;
+    background-color: #ffffff;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    padding-top: 100px;
+  }
+
+  .main-nav__wrapper::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: #d2d9df;
+    left: 0;
+    top: 130px;
+  }
+
+  .main-nav__menu-one .container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
   }
 
   .main-nav__menu-one {
@@ -1475,6 +1559,17 @@ button,
 
   .main-nav__list {
     margin-left: 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+  }
+
+  .main-nav__item {
+    margin-bottom: 20px;
   }
 
   .main-nav__link {
@@ -1482,12 +1577,120 @@ button,
     font-size: 16px;
     line-height: 20px;
     color: #181a31;
+    opacity: 1;
+  }
+
+  .main-nav__search {
+    width: 92%;
+    position: absolute;
+    top: 70px;
+  }
+
+  .main-nav__search input::-webkit-input-placeholder {
+    color: #181a31;
+    opacity: 0.5;
+  }
+
+  .main-nav__search input::-moz-placeholder {
+    color: #181a31;
+    opacity: 0.5;
+  }
+
+  .main-nav__search input:-ms-input-placeholder {
+    color: #181a31;
+    opacity: 0.5;
+  }
+
+  .main-nav__search input::-ms-input-placeholder {
+    color: #181a31;
+    opacity: 0.5;
+  }
+
+  .main-nav__search input::placeholder {
+    color: #181a31;
+    opacity: 0.5;
+  }
+
+  .main-nav__search input {
+    color: #181a31;
+    background-color: #f7f7f8;
+  }
+
+  .main-nav__search label button svg {
+    color: #181a31;
+  }
+
+  .main-nav__menu-two {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding-top: 55px;
+  }
+
+  .main-nav__menu-two .container {
+    -ms-grid-columns: 100%;
+    grid-template-columns: 100%;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+  }
+
+  .main-nav__other {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .main-nav__other-item {
+    margin-bottom: 20px;
+  }
+
+  .main-nav__other-item.accordion .main-nav__other-content {
+    position: relative;
+  }
+
+  .main-nav__other-link {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .main-nav__other-link:hover,
+  .main-nav__other-link:focus,
+  .main-nav__other-link:active {
+    color: #008ef8;
+  }
+
+  .main-nav__other-link svg:last-of-type {
+    display: block;
+  }
+
+  .main-nav__other-link svg:first-of-type {
+    display: none;
+  }
+
+  .main-nav__other-content {
+    display: block;
+    position: relative;
+    top: auto;
+    left: auto;
+    border: none;
+    -webkit-filter: none;
+    filter: none;
+  }
+
+  .main-nav__other-inner-item a {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
   }
 
   .main-nav__contacts {
     position: absolute;
-    top: -48px;
-    left: 7%;
+    top: -44px;
+    left: -22%;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
   }
 
   .main-nav__contacts::before {
@@ -1501,19 +1704,25 @@ button,
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-    right: -40px;
+    right: -16px;
   }
 
   .main-nav__phone {
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
+    margin-bottom: 2px;
+  }
+
+  .main-nav__phone-text {
+    font-size: 12px;
+    line-height: 18px;
   }
 
   .main-nav__basket {
     position: absolute;
     top: -38px;
-    left: 62%;
+    left: 45%;
   }
 
   .main-nav__toggle {
@@ -1530,7 +1739,7 @@ button,
   .langs.accordion {
     position: absolute;
     top: -34px;
-    left: -28%;
+    left: -82%;
   }
 
   .langs__btn {

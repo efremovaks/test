@@ -39,7 +39,7 @@
         <nav class="main-nav">
           <button class="main-nav__toggle" type="button" aria-label="Переключатель отображения меню" aria-pressed="false"><span class="burger"><span class="burger__line burger__line--first"></span><span class="burger__line burger__line--second"></span><span class="burger__line burger__line--third"></span><span class="burger__line burger__line--fourth"></span></span></button>
           <div class="main-nav__wrapper">
-            <p class="main-nav__header">меню</p>
+            <p class="main-nav__header">Меню</p>
             <div class="main-nav__menu-one">
               <div class="container">
                 <div class="langs accordion" data-accordion="parent" data-single>
@@ -85,6 +85,9 @@
                         <svg width="18" height="18" aria-hidden="true">
                           <use xlink:href="#icon-accordeon-toggle"></use>
                         </svg>
+                        <svg width="5" height="5" aria-hidden="true">
+                          <use xlink:href="#icon-lang-toggle"></use>
+                        </svg>
                       </button>
                       <div class="main-nav__other-content" data-accordion="content">
                         <ul class="main-nav__other-list">
@@ -114,7 +117,7 @@
                     </ul>
                   </div>
                 </div>
-                <div class="main-nav__basket"><a href="#">Корзина
+                <div class="main-nav__basket"><a href="#"><span>Корзина</span>
                     <svg width="18" height="18" aria-hidden="true">
                       <use xlink:href="#icon-basket"></use>
                     </svg></a></div>
@@ -123,7 +126,9 @@
           </div>
         </nav>
       </header>
-      <main></main>
+      <main>
+        <div class="content"></div>
+      </main>
       <footer class="footer">
         <div class="container"></div>
       </footer>

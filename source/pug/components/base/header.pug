@@ -59,7 +59,7 @@ mixin header(headerMods, currentUrl)
           span.burger__line.burger__line--third
           span.burger__line.burger__line--fourth
       .main-nav__wrapper
-        p.main-nav__header меню
+        p.main-nav__header Меню
         .main-nav__menu-one
           .container
             .langs.accordion(data-accordion="parent" data-single)
@@ -93,6 +93,7 @@ mixin header(headerMods, currentUrl)
                     .main-nav__other-element(data-accordion="element")
                       button.main-nav__other-link(data-accordion="button") Майнинг отель
                         +icon("icon-accordeon-toggle", 18, 18)
+                        +icon("icon-lang-toggle", 5, 5)
                       .main-nav__other-content(data-accordion="content")
                         ul.main-nav__other-list
                           each item in link.innerLinks
@@ -117,7 +118,8 @@ mixin header(headerMods, currentUrl)
                       +icon("icon-ws", 24, 24)
 
             .main-nav__basket
-              a(href="#") Корзина
+              a(href="#")
+                span Корзина
                 +icon("icon-basket", 18, 18)
 
 
