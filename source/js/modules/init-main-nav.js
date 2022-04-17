@@ -8,7 +8,7 @@ const initMainNav = () => {
 
   if (menuBtn) {
     menuBtn.addEventListener('click', () => {
-      mainNav.classList.toggle('main-nav--open');
+      mainNav.classList.toggle('main-nav--closed');
     });
   }
 };

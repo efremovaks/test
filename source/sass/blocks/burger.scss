@@ -29,15 +29,25 @@
   }
 }
 
-.main-nav--open .burger__line--first,
-.main-nav--open .burger__line--fourth {
+.burger__line--first,
+.burger__line--fourth {
   opacity: 0;
 }
 
-.main-nav--open .burger__line--second {
+.main-nav--closed .burger__line--first,
+.main-nav--closed .burger__line--fourth {
+  opacity: 1;
+}
+
+.burger__line--second {
   transform: rotate(45deg);
 }
 
-.main-nav--open .burger__line--third {
+.burger__line--third {
   transform: rotate(-45deg);
+}
+
+.main-nav--closed .burger__line--second,
+.main-nav--closed .burger__line--third {
+  transform: rotate(0);
 }
